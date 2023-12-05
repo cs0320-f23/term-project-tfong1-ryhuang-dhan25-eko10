@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const SearchBar = () => {
     const [doi, setDoi] = useState("");
@@ -17,7 +18,7 @@ const SearchBar = () => {
                 }
             }}
         ></input>
-        <button>Go</button>
+        <button className="bg-black"><Link to = "/recommended" >Find Papers!</Link></button>
         </>
     );
 }

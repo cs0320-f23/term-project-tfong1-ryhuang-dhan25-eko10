@@ -5,6 +5,7 @@ import Start from '../pages/start';
 import Root from '../layout/RootLayout';
 import Results from '../pages/results';
 import Recommended from '../pages/recommended';
+import Research_display from '../pages/research_display';
 
 
 
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
             {
                 path:"recommended",
                 element: <Recommended />
+            },
+            {
+                path:"research_display",
+                element: <Research_display />
             }
         ]
 
