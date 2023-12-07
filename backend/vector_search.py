@@ -1,13 +1,32 @@
-from flask import Flask
+from flask import Flask, jsonify, request
+from flask_caching import Cache
 import pinecone
 from gensim.models.doc2vec import Doc2Vec,\
     TaggedDocument
 from nltk.tokenize import word_tokenize
 import nltk
+import redis
 
 nltk.download('punkt')
 
 app = Flask(__name__)
+
+# redis caching
+redis_client = redis.Redis()
+
+# config={'CACHE_TYPE': 'redis',
+#     'CACHE_REDIS_HOST': 'redis',
+#     'CACHE_REDIS_PORT': 6379,
+#     'CACHE_REDIS_DB': 0,
+#     'CACHE_REDIS_URL': 'redis://redis:6379/0',
+#     'CACHE_DEFAULT_TIMEOUT': 500}
+config = {
+    "DEBUG": True,          # some Flask specific configs
+    "CACHE_TYPE": "SimpleCache",  # Flask-Caching related configs
+    "CACHE_DEFAULT_TIMEOUT": 300
+}
+app.config.from_mapping(config)
+cache = Cache(app)
 
 @app.route('/data')
 def index():
@@ -17,6 +36,7 @@ def index():
         }
 
 @app.route('/pinecone/<query>')
+@cache.cached(timeout=50)
 def cosine_similarity(query):
     mock = ["In recent decades, mass spectrometry-based lipidomics has provided a fertile environment for scientific investigations of biochemical and mechanistic processes in biological systems. Notably, this approach has been used to characterize physiological and pathological processes relevant to the central nervous system by identifying changes in the sphingolipid content in the brain, cerebral spinal fluid, and blood plasma. However, despite a preponderance of studies identifying correlations between specific lipids and disease progression, this powerful resource has not yet substantively translated into clinically useful diagnostic assays. Part of this gap may be explained by insufficient depth of the lipidomic profiles in many studies, by lab-to-lab inconsistencies in methodology, and a lack of absolute quantification.",
         "Bromhidrosis is characterized as a chronic condition related to malodor from the skin. The underlying etiology is from bacterial decompositions of glandular secretion products. However, specific pathways and metabolites for the disease are yet to be investigated. Here, twenty-eight metabolites, including fifteen major sweat constituents and thirteen compounds emitted from malodor-producing skin bacteria, were subjected to the metabometric analysis using Metaboanalyst. Different pathways in the butanoate metabolism revealed that acetolactate synthase (ALS) in skin Staphylococcus epidermidis (S. epidermidis) bacteria are catalyzing pyruvate to several malodor compounds like diacetyl. In the docking studies of the sulfonylurea-ALS interaction, five selected sulfonylureas, which originally were developed for the treatment of diabetes mellitus type 2, showed different binding free energies (ΔG) from chlorimuron ethyl-a well-known ALS sulfonylurea inhibitor. Amongst five sulfonylureas, gliquidone and glisoxepide were found to have free energy differences that were lower than or equal to chlorimuron ethyl, revealing their high affinities to ALS. In the future, further investigations of gliquidone and glisoxepide against ALS in skin bacteria would be crucial in repurposing these two sulfonylureas as new anti-bromhidrosis drugs.",
