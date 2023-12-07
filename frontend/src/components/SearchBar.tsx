@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 const SearchBar = () => {
     const [doi, setDoi] = useState("");
+
     
     
     return (
@@ -14,6 +15,10 @@ const SearchBar = () => {
             onKeyDown={(ev) => {
                 if (ev.key == "Enter") {
                     console.log(doi);
+                    let url = "https://api.crossref.org/works/$" + doi;
+                    fetch(url).then(response => response.json()).then(json => {
+                        console.log(json.message.abstract);
+                    })
                     setDoi("");
                 }
             }}
