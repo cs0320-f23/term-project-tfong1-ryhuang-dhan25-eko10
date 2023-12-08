@@ -18,6 +18,7 @@ const SearchBar = () => {
                     let url = "https://api.crossref.org/works/$" + doi;
                     fetch(url).then(response => response.json()).then(json => {
                         console.log(json.message.abstract);
+                        console.log(json.message.title)
                     })
                     setDoi("");
                 }
