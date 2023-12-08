@@ -3,8 +3,6 @@ import { Link } from "react-router-dom";
 
 const SearchBar = () => {
     const [doi, setDoi] = useState("");
-
-    
     
     return (
         <>
