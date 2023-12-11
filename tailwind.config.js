@@ -4,9 +4,9 @@ export default {
     "index.html",
     "./src/**/*.{jsx,js,tsx,ts}"
   ],
-  theme: {
-    extend: {},
-  },
-  plugins: [],
+  // theme: {
+  //   extend: {},
+  // },
+  // plugins: [],
 }
 

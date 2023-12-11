@@ -1,25 +1,22 @@
-import { Link } from "react-router-dom"
+import SearchBar from "../components/SearchBar";
+import BookmarkButton from "../components/BookmarkButton";
 
-import { useSpring, animated } from "@react-spring/web"
-
-function ResultAnimator() {
-  const springs = useSpring({
-    from: { y: -100 },
-    to: { y: 0},
-    config: { tension:120, friction:14 }
-  })
-  return springs
-}
-
-export default function Start(){
-    return(
-        <animated.div style={{...ResultAnimator()}}>
-        <div className = "justify-between flex-col flex items-center mt-52">
-            <h1 className = "text-8xl font-bold mb-5">Research Recommender</h1>
-            <button className = "duration-300 bg-white text-purple-500 to-pink-500 px-6 py-3 font-bold rounded-md hover:scale-110 transition ease-in-out text-3xl">
-                <Link to = "/results" >Start!</Link>
-            </button>
+export default function Start() {
+  return (
+    <div className="flex-col flex justify-between items-center mt-52 h-screen">
+      <div>
+        <h1 className="text-8xl font-bold mb-5">Research Recommender</h1>
+        <div>
+          <SearchBar />
         </div>
-        </animated.div>   
-    )
+        <div style={{ marginBottom: "20px" }}></div>
+        <div>
+          <BookmarkButton />
+        </div>
+      </div>
+      <div>
+        <h4>Made by Eric, David, Ryan, and Tim</h4>
+      </div>
+    </div>
+  );
 }

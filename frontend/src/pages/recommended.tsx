@@ -1,11 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import mockedResult from "../assets/mockedResults.json";
 import PaperItem from "../components/PaperItem.tsx";
-import Button from "@mui/material/Button";
 import { Grid } from "@mui/material";
-
-function Recommended() {
+import PageHeader from "../components/Pageheader.tsx";
+function recommended() {
   // const divs = [];
 
   // for (let i = 0; i < 15; i++) {
@@ -25,8 +23,14 @@ function Recommended() {
   //   </div>
   // );
 
+  //going to make container a class with all of them
   return (
     <div>
+      <div style={{ marginTop: "30px" }}></div>
+      <PageHeader />
+
+      <div style={{ marginTop: "30px" }}></div>
+      <h1>Recommended Papers</h1>
       <Grid container rowSpacing={1} columnSpacing={1}>
         {mockedResult.map((item, index) => (
           <Grid item xs={3} key={index}>
@@ -42,4 +46,4 @@ function Recommended() {
   );
 }
 
-export default Recommended;
+export default recommended;
