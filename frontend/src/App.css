@@ -44,3 +44,69 @@
 .read-the-docs {
   color: #888;
 }
+
+.title {
+    font-size: 1.2rem;
+    margin:1rem;
+
+}
+
+.author {
+    margin:1rem;
+    font-size: 1.2rem;
+
+}
+
+.date {
+    font-size: 2rem;
+    font-weight:bold;
+}
+
+.doi {
+    font-size: 2rem;
+    font-weight:bold;
+}
+
+#total {
+    margin: 2rem;
+    font-size: 2rem;
+}
+
+.main-body {
+    margin-left: 35vw;
+}
+
+
+.card {
+    margin: 2rem;
+    padding: 1rem;
+    border:1px solid;
+    border-radius: 15px;
+    max-width: 400px; 
+    max-height: fit-content; 
+    background-color:rgb(58, 68, 77);
+    color:white;
+}
+
+.card:hover {
+    background-color:rgb(137, 134, 135);
+}
+
+.searchBar {
+  padding: 18px;
+  width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px; 
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  
+}
+
+
+
+

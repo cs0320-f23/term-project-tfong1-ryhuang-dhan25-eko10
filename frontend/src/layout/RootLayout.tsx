@@ -8,7 +8,7 @@ export default function Root() {
           </div>
         <footer className = "p-2">
             <div className = "flex">
-              <p className = "m">Made by Ryan, Tim, Eric, David</p> 
+              <p className = "m"></p> 
             </div>
         </footer>      
       </div>
