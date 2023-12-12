@@ -33,13 +33,13 @@ def index():
 #     return pd.read_csv('backend/paper_details_100.csv')
 
 def cosine_similarity(query):
-    papers = pd.read_csv('backend/paper_details_100.csv')
-    abstracts = papers[['Abstract']]
-    dois = papers[['Ids']].values
-    abstracts = abstracts.astype(str).values.tolist()
-    abstracts_4 = abstracts[0][:10]
-    dois_4 = dois[0][:10]
-    print(dois_4)
+    papers = pd.read_csv('backend/data/paper_details_80.csv')
+    # abstracts = papers[['Abstract']]
+    # dois = papers[['Ids']].values
+    # abstracts = abstracts.astype(str).values.tolist()
+    # abstracts_4 = abstracts[0][:10]
+    # dois_4 = dois[0][:10]
+    # print(dois_4)
 
     mock = ["In recent decades, mass spectrometry-based lipidomics has provided a fertile environment for scientific investigations of biochemical and mechanistic processes in biological systems. Notably, this approach has been used to characterize physiological and pathological processes relevant to the central nervous system by identifying changes in the sphingolipid content in the brain, cerebral spinal fluid, and blood plasma. However, despite a preponderance of studies identifying correlations between specific lipids and disease progression, this powerful resource has not yet substantively translated into clinically useful diagnostic assays. Part of this gap may be explained by insufficient depth of the lipidomic profiles in many studies, by lab-to-lab inconsistencies in methodology, and a lack of absolute quantification.",
         "Bromhidrosis is characterized as a chronic condition related to malodor from the skin. The underlying etiology is from bacterial decompositions of glandular secretion products. However, specific pathways and metabolites for the disease are yet to be investigated. Here, twenty-eight metabolites, including fifteen major sweat constituents and thirteen compounds emitted from malodor-producing skin bacteria, were subjected to the metabometric analysis using Metaboanalyst. Different pathways in the butanoate metabolism revealed that acetolactate synthase (ALS) in skin Staphylococcus epidermidis (S. epidermidis) bacteria are catalyzing pyruvate to several malodor compounds like diacetyl. In the docking studies of the sulfonylurea-ALS interaction, five selected sulfonylureas, which originally were developed for the treatment of diabetes mellitus type 2, showed different binding free energies (ΔG) from chlorimuron ethyl-a well-known ALS sulfonylurea inhibitor. Amongst five sulfonylureas, gliquidone and glisoxepide were found to have free energy differences that were lower than or equal to chlorimuron ethyl, revealing their high affinities to ALS. In the future, further investigations of gliquidone and glisoxepide against ALS in skin bacteria would be crucial in repurposing these two sulfonylureas as new anti-bromhidrosis drugs.",
@@ -47,7 +47,7 @@ def cosine_similarity(query):
         "intro software engineering at brown cs32; very fun"]
     
     tagged_data = [TaggedDocument(words=word_tokenize(doc.lower()),
-                              tags=[str(i)]) for i, doc in enumerate(abstracts_4)]
+                              tags=[str(i)]) for i, doc in enumerate(mock)]
     
     vector_dim = 20
 
@@ -60,11 +60,11 @@ def cosine_similarity(query):
  
     # get the document vectors
     document_vectors = [model.infer_vector(
-        word_tokenize(doc.lower())) for doc in abstracts_4]
+        word_tokenize(doc.lower())) for doc in mock]
  
     embeddings = []
     #  print the document vectors
-    for i, doc in enumerate(abstracts_4):
+    for i, doc in enumerate(mock):
         embeddings.append(document_vectors[i])
     
     # Load Pinecone API key
@@ -93,14 +93,14 @@ def cosine_similarity(query):
     docIDs = range(0, len(embeddings))
     # data = list(zip(docIDs, embeddings))
     # Upload the final data
-    vecs = zip(dois_4, embeddings)
-    my_index.upsert(vectors = vecs, namespace='namespace_papers'
+    vecs = zip(docIDs, embeddings)
+    my_index.upsert(namespace='namespace_papers', vectors=[
         #CHange ids to dois
 
-        # ("A", embeddings[0].tolist()),
-        # ("B", embeddings[1].tolist()),
-        # ("C", embeddings[2].tolist()),
-        # ("D", embeddings[3].tolist())
+        ("A", embeddings[0].tolist()),
+        ("B", embeddings[1].tolist()),
+        ("C", embeddings[2].tolist()),
+        ("D", embeddings[3].tolist())]
     )
 
     a = query
