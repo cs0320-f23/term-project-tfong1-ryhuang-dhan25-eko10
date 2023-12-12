@@ -21,12 +21,12 @@ def create_embeddings(filepath):
     titles = papers[['Title']].astype(str).values
     dois = papers[['Ids']]
     topics = papers[['Topics']]
-    topics_10 = topics[:100000]
+    topics_10 = topics[:10000]
 
     abstracts = abstracts.astype(str).values.tolist()
     title_abstract = titles + ' [SEP] ' + abstracts
-    title_abstract_10 = title_abstract[:100000]
-    dois_10 = dois[:100000]
+    title_abstract_10 = title_abstract[:10000]
+    dois_10 = dois[:10000]
 
     
     tagged_data = [TaggedDocument(words=word_tokenize(doc[0].lower()),
@@ -80,7 +80,9 @@ for filename in os.listdir(directory):
             new_df['DOIs'] = dois
             new_df['Topcis']= topics
             paper_df = pd.concat([paper_df, new_df],ignore_index=True)
-        
         print(paper_df.head())
+
+#Gets rid of papers in the database that don't have a title
+paper_df.dropna(axis=0, inplace = True)
+
 paper_df.to_csv('vector_database_900.csv')
-# cosine_similarity('4')
