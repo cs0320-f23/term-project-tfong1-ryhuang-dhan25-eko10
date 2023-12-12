@@ -4,6 +4,7 @@ class VectorLookup:
     def __init__(self) -> None:
         self.database: pd.DataFrame = None
         self.query = None
+        self.vectors = []
     
     def change_database(self, filename: str):
         try:
@@ -27,11 +28,16 @@ class VectorLookup:
             return None
     
     def return_all_vectors(self):
-        return self.database['Vectors']
+        vectors_column = self.database['Vectors'].tolist()
+        return vectors_column
+
+    def return_all_doi_labels(self):
+        doi_column = self.database.index.values.tolist()
+        return doi_column
 
 if __name__ == '__main__':
     lookup = VectorLookup()
-    lookup.change_database('backend/data/vector_database_80000.pickle')
+    lookup.change_database('/Users/ryanhuang/Desktop/term-project-tfong1-ryhuang-dhan25-eko10/backend/data/vector_database_80000.pickle')
     print(lookup.return_vector('10.1038/modpathol.3800247'))
     print(lookup.return_all_vectors()[:5])
 

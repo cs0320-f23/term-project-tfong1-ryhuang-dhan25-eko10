@@ -10,10 +10,11 @@ class Node:
         self.bounding_box = None
     
 class KD_Tree:
-    def __init__(self, points, dimension):
+    def __init__(self, points, dimension, labels):
         self.points = points
         self.dimension = dimension
         self.max_values = []
+        self.points_to_labels = {tuple(points[i]) : labels[i] for i in range(len(points))} # each point has a label
         for dim in range(self.dimension):
             points.sort(key=lambda x: x[dim])
             self.max_values.append((points[0][dim], points[-1][dim]))
@@ -82,12 +83,13 @@ class KD_Tree:
     def kNN(self, query_pt, k):
         min_heap = []
         self.kNN_helper(query_pt, self.tree, min_heap, 0, k)
-        return [point for _, point in min_heap]
+        return [self.points_to_labels[tuple(point)] for _, point in min_heap]
 
     
 if __name__ == "__main__":
     points = [(0,1,1), (1,2,1), (9,8,9)]
-    kd_tree = KD_Tree(points, 2)
+    labels = ['a', 'b', 'c']
+    kd_tree = KD_Tree(points, 2, labels)
     print(kd_tree.kNN((0,1,9), 2))
     
 
