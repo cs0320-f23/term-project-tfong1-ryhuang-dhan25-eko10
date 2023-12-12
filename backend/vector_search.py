@@ -47,7 +47,7 @@ model.train(tagged_data,
                 epochs=model.epochs)
 
 lookup = VectorLookup()
-lookup.change_database('/Users/ryanhuang/Desktop/term-project-tfong1-ryhuang-dhan25-eko10/backend/data/vector_database_80000.pickle')
+lookup.change_database('backend/data/vector_database_800000_cleaned.pickle')
 embeddings = lookup.return_all_vectors()
 labels = lookup.return_all_doi_labels()
 
@@ -64,9 +64,9 @@ def cosine_similarity():
     else:
         query_embedding = model.infer_vector(word_tokenize(query.lower()))
         k_nearest = kd_tree.kNN(query_embedding, k)
-        json_dump = json.dumps({"result" : k_nearest, "type" : "success"}, cls=NumpyEncoder)
+        data = lookup.find_doi_info(k_nearest)
+        json_dump = json.dumps({"result" : data, "type" : "success"}, ensure_ascii=False, cls=NumpyEncoder)
         return json_dump
-    
 
 if __name__ == "__main__":
     app.run(port=5000)

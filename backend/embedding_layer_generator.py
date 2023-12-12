@@ -7,6 +7,7 @@ import pandas as pd
 import os
 import numpy as np
 from sentence_transformers import SentenceTransformer
+from tqdm import tqdm
 
 def split_data(abstracts_array, num_splits, func):
     batch_size = len(abstracts_array//num_splits)
@@ -21,12 +22,12 @@ def create_embeddings(filepath):
     titles = papers[['Title']].astype(str).values
     dois = papers[['Ids']]
     topics = papers[['Topics']]
-    topics_10 = topics[:10000]
+    topics_10 = topics[:100000]
 
     abstracts = abstracts.astype(str).values.tolist()
     title_abstract = titles + ' [SEP] ' + abstracts
-    title_abstract_10 = title_abstract[:10000]
-    dois_10 = dois[:10000]
+    title_abstract_10 = title_abstract[:100000]
+    dois_10 = dois[:100000]
 
     
     tagged_data = [TaggedDocument(words=word_tokenize(doc[0].lower()),
@@ -62,7 +63,7 @@ def create_embeddings(filepath):
 
 paper_df = None
 directory = "/Users/davidhan67/Downloads/csv_docs"
-for filename in os.listdir(directory):
+for filename in tqdm(os.listdir(directory)):
     if filename.endswith('csv'):
         print(filename)
         file = os.path.join(directory, filename)

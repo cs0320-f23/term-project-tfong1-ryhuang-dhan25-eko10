@@ -1,18 +1,16 @@
-
-
+//UNFINISHED
+//example:http://127.0.0.1:5000/knn?query=western%20blot&k=20
 export async function getPaper(query: string) {
-    return fetch("http://127.0.0.1:5000/pinecone/"+query)
+    return fetch("http://127.0.0.1:5000/knn?query="+query+"&k=40")
     .then(response => response.json())
     .then(json => {
-        const matches = json.matches;
-        // if(matches == "success") {
-        //     const result: string[][] = json.result;
-        //     // setDisplay([result]);
-        // }
-        // else {
-        //     const error = json.error_type
-        //     // setDisplay(error);
-        // }
+        const type = json.type;
+        if(type == "success") {
+            const result: string[] = json.result;
+        }
+        else {
+            console.log(json.type);
+        }
     })
-    // .catch(e => {setDisplay(["Server error"])});
+    .catch(e => {console.log(["Server error"])});
 } 
