@@ -27,7 +27,7 @@ config = {
 app.config.from_mapping(config)
 cache = Cache(app)
 
-vector_dim = 20
+vector_dim = 30
 
 model = Doc2Vec(vector_size=vector_dim,
                 min_count=2, epochs=50)
@@ -45,7 +45,7 @@ model.train(tagged_data,
                 epochs=model.epochs)
     
  
-# get the document vectors
+# get the document vectors 
 document_vectors = [model.infer_vector(
         word_tokenize(doc.lower())) for doc in mock]
  
@@ -58,6 +58,9 @@ kd_tree = KD_Tree(embeddings, vector_dim)
 
 @app.route('/pinecone/<query>')
 @cache.cached(timeout=50)
+
+# cosine similarity: Returns the computed cosine similarity score between the query, which is converted into a 
+# vector, and the items in the vector database.
 def cosine_similarity(query):
     if kd_tree is None:
         return {"message": "tree not found"}

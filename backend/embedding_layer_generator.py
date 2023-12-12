@@ -73,16 +73,16 @@ for filename in os.listdir(directory):
         if paper_df is None:
             paper_df = pd.DataFrame(items, index=list(range(len(embeds))))
             paper_df['DOIs'] = dois
-            paper_df['Topcis']= topics
+            paper_df['Topics']= topics
 
         else:
             new_df = pd.DataFrame(items, index=list(range(len(embeds))))
             new_df['DOIs'] = dois
-            new_df['Topcis']= topics
+            new_df['Topics']= topics
             paper_df = pd.concat([paper_df, new_df],ignore_index=True)
         print(paper_df.head())
 
 #Gets rid of papers in the database that don't have a title
 paper_df.dropna(axis=0, inplace = True)
 
-paper_df.to_csv('vector_database_900.csv')
+paper_df.to_pickle('vector_database_80000.pickle')
