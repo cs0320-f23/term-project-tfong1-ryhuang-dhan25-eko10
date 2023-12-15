@@ -4,8 +4,14 @@ import mockedResult from "../assets/mockedResults.json";
 import PaperItem from "../components/PaperItem.tsx";
 import { Grid } from "@mui/material";
 import PageHeader from "../components/Pageheader.tsx";
+import { useState, SetStateAction, Dispatch } from "react";
 
-function recommended() {
+
+interface recommendedProps {
+  recommenders: string | string[][];
+  setRecommenders: Dispatch<SetStateAction<string | string[][]>>;
+}
+function recommended(props: recommendedProps) {
 
   return (
     <div>

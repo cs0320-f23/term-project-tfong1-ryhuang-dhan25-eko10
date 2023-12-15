@@ -1,33 +1,14 @@
-# React + TypeScript + Vite
+# Paper Pilot
+### dhan25, eko10, ryhuang, tfong1
+Paper Pilot is a recommender system for academics to find their next good reads! The recommendation system is based on a vector database and vector search using the approximate nearest neighbors (ANN) search algorithm. 
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Features 
+Users can search for a paper using a DOI, and our program will look up the paper and get the details. We feed these details to our backend and generate a vector representation of it, then perform ANN search to retrieve the closest papers. Users can also bookmark papers that they like and view bookmarks that they saved. 
 
-Currently, two official plugins are available:
+## Contributions
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Hours spent
 
-## Expanding the ESLint configuration
+## Bugs
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
-
-
-source venv/bin/activate
+## Testing
