@@ -9,13 +9,14 @@ interface PaperItemProps {
   };
 }
 
+
 const PaperItem: React.FC<PaperItemProps> = ({ item }) => {
   return (
     <div>
       <div className="title">{item.title}</div>
-      <div className="author">{item.author}</div>
-      <div className="date">{item.date}</div>
-      <div className="doi">{item.doi}</div>
+      {/* <div className="author">{"Authors : " + item.author}</div> */}
+      {/* <div className="date">{"Date : " + item.date}</div>
+      <div className="doi">{"DOI : " + item.doi}</div> */}
     </div>
   );
 };

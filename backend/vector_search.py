@@ -1,6 +1,5 @@
 from flask import Flask, jsonify, request
 from flask_caching import Cache
-import pinecone
 from gensim.models.doc2vec import Doc2Vec,\
     TaggedDocument
 from nltk.tokenize import word_tokenize
@@ -13,7 +12,11 @@ from vector_lookup import VectorLookup
 
 nltk.download('punkt')
 
+# The backend should include appropriate CORS headers in its responses to explicitly allow requests from the front end's domain.
+from flask_cors import CORS
+
 app = Flask(__name__)
+CORS(app)
 
 # redis caching
 # app.config['CACHE_TYPE'] = 'redis'
@@ -47,7 +50,7 @@ model.train(tagged_data,
                 epochs=model.epochs)
 
 lookup = VectorLookup()
-lookup.change_database('backend/data/vector_database_800000_cleaned.pickle')
+lookup.change_database('/Users/eric_ex/Code/CS0320/term-project-tfong1-ryhuang-dhan25-eko10/backend/data/vector_database_80000_cleaned.pickle')
 embeddings = lookup.return_all_vectors()
 labels = lookup.return_all_doi_labels()
 

@@ -37,34 +37,26 @@
   }
 }
 
+/* Style for the card container */
 .card {
-  padding: 2em;
+  width: 65%; /* Set a fixed width for the card */
+  height: 500px;
+  border: 1px solid #ccc; /* Optional: Add a border for visual separation */
+  padding: 10px; /* Optional: Add padding for better visual appearance */
+  margin-bottom: 20px; /* Optional: Add margin for spacing between cards */
 }
 
-.read-the-docs {
-  color: #888;
+
+/* Styles for PaperItem components within the card */
+.card .title {
+  font-size: 16px; /* Adjust font size based on your design */
+  font-weight: bold;
 }
 
-.title {
-    font-size: 1.2rem;
-    margin:1rem;
-
-}
-
-.author {
-    margin:1rem;
-    font-size: 1.2rem;
-
-}
-
-.date {
-    font-size: 2rem;
-    font-weight:bold;
-}
-
-.doi {
-    font-size: 2rem;
-    font-weight:bold;
+.card .author,
+.card .date,
+.card .doi {
+  font-size: 14px; /* Adjust font size based on your design */
 }
 
 #total {

@@ -4,32 +4,44 @@ import { useNavigate } from "react-router-dom";
 const SearchBar = () => {
   const [doi, setDoi] = useState("");
   const navigate = useNavigate();
-  
+
+  const handleSearch = async () => {
+    try {
+      const url = "https://api.crossref.org/works/$" + doi;
+      const response = await fetch(url);
+      const json = await response.json();
+      const abstract = json.message.abstract;
+
+      const backendUrl = `http://127.0.0.1:5000/knn?query=${encodeURIComponent(
+        abstract
+      )}&k=16`;
+      const backendResponse = await fetch(backendUrl);
+      const responseJSON = await backendResponse.json();
+
+      // Handle the response from the backend
+      const recommendedResults = responseJSON.result;
+
+      // Navigate to the "/recommended" route with the data
+      navigate("/recommended", { state: { recommendedResults } });
+    } catch (error) {
+      // Handle errors
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <>
       <input
         className="searchBar"
         placeholder="DOI"
         value={doi}
-        onChange={(e) => {
-          setDoi(e.target.value);
-        }}
+        onChange={(e) => setDoi(e.target.value)}
         onKeyDown={(ev) => {
-          if (ev.key == "Enter") {
-            // console.log(doi);
-            // let url = "https://api.crossref.org/works/$" + doi;
-            // fetch(url).then(response => response.json()).then(json => {
-            //     console.log(json.message.abstract);
-            //     console.log(json.message.title)
-            // })
-
-            //fetch backend for results, then pass into navigate
-            navigate("/recommended");
-            // setDoi("");
+          if (ev.key === "Enter") {
+            handleSearch();
           }
         }}
-      ></input>
-      {/* <button className="bg-black"><Link to = "/recommended" >Find Papers!</Link></button> */}
+      />
     </>
   );
 };

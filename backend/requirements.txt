@@ -3,5 +3,4 @@ redis
 flask
 flask_caching
 Cache
-pinecone
 gensim
