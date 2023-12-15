@@ -39,8 +39,8 @@
 
 /* Style for the card container */
 .card {
-  width: 65%; /* Set a fixed width for the card */
-  height: 500px;
+  width: 90%; /* Set a fixed width for the card */
+  height: 300px;
   border: 1px solid #ccc; /* Optional: Add a border for visual separation */
   padding: 10px; /* Optional: Add padding for better visual appearance */
   margin-bottom: 20px; /* Optional: Add margin for spacing between cards */
@@ -49,7 +49,7 @@
 
 /* Styles for PaperItem components within the card */
 .card .title {
-  font-size: 16px; /* Adjust font size based on your design */
+  font-size: 20px; /* Adjust font size based on your design */
   font-weight: bold;
 }
 
@@ -73,7 +73,7 @@
     margin: 2rem;
     padding: 1rem;
     border:1px solid;
-    border-radius: 15px;
+    border-radius: 10px;
     max-width: 400px; 
     max-height: fit-content; 
     background-color:rgb(58, 68, 77);
@@ -87,6 +87,14 @@
 .searchBar {
   padding: 18px;
   width: 300px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  font-size: 16px; 
+}
+
+.searchButton {
+  padding: 18px;
   border: 1px solid #ccc;
   border-radius: 8px;
   outline: none;
