@@ -26,7 +26,7 @@ const SearchBar = () => {
       navigate("/recommended", { state: { recommendedResults } });
     } catch (error) {
       // Handle errors
-      console.error("Error:", error);
+      
     }
   };
 
