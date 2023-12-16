@@ -51,6 +51,7 @@ model.train(tagged_data,
 
 lookup = VectorLookup()
 lookup.change_database('/Users/timothyfong/Desktop/term-project-tfong1-ryhuang-dhan25-eko10/backend/data/vector_database_80000_cleaned.pickle')
+
 embeddings = lookup.return_all_vectors()
 labels = lookup.return_all_doi_labels()
 

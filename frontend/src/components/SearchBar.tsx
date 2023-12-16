@@ -11,9 +11,10 @@ const SearchBar = () => {
       const response = await fetch(url);
       const json = await response.json();
       const abstract = json.message.abstract;
+      const title = json.message.title;
 
       const backendUrl = `http://127.0.0.1:5000/knn?query=${encodeURIComponent(
-        abstract
+        title
       )}&k=16`;
       const backendResponse = await fetch(backendUrl);
       const responseJSON = await backendResponse.json();
@@ -31,7 +32,8 @@ const SearchBar = () => {
 
   return (
     <>
-      <input
+      <form>
+        <input
         className="searchBar"
         placeholder="DOI"
         value={doi}
@@ -42,6 +44,9 @@ const SearchBar = () => {
           }
         }}
       />
+      <button className="searchButton" type='button' onClick={() => handleSearch()}>Search</button>
+      </form>
+      
     </>
   );
 };
