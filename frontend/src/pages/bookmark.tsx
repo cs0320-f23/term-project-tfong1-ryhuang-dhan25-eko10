@@ -7,21 +7,28 @@ import { db } from "../firebase";
 import { get, ref } from "firebase/database";
 import mockedResult from "../assets/mockedResults.json";
 import item from "../components/PaperItem";
+import RemoveBookmark from "../components/RemoveBookmark";
 
+interface PaperItem {
+  abstract: string;
+  author: string[];
+  date: number[];
+  doi: string;
+  title: string;
+}
+
+interface DataItem {
+  paperItem: PaperItem;
+  uuid: string;
+}
 function Bookmark() {
   const navigate = useNavigate();
-
-  const [data, setData] = useState<
-    {
-      item: {
-        title: string;
-        author: string[];
-        date: string[];
-        doi: string;
-      };
-    }[]
-  >([]);
-
+  // const [bookmarkID, setBookmarkID] = useState<string[]>([]);
+ const [data, setData] = useState<DataItem[]>([]);
+ 
+const removeDataItem = (index: number) => {
+  setData((prevData) => prevData.filter((item, i) => i !== index));
+};
 
   useEffect(() => {
     const databaseRef = ref(db);
@@ -31,8 +38,12 @@ function Bookmark() {
           const fetchedData = snapshot.val();
           console.log("Fetched data:", fetchedData);
         const paperItemsArray = Object.keys(fetchedData).map(
-          (key) => fetchedData[key].paperItem
+          (key) => fetchedData[key]
         );
+        //  const bookmarkIDArray = Object.keys(fetchedData).map(
+        //    (key) => fetchedData[key]
+        //  );
+          // setData(bookmarkIDArray);
          console.log(" data:", paperItemsArray);
           setData(paperItemsArray);
         } else {
@@ -45,7 +56,7 @@ function Bookmark() {
   }, []); // Empty dependency array ensures that the effect runs only once on mount
 
   return (
-    <div>
+    <div key={data.length}>
       <div style={{ marginTop: "30px" }}></div>
       <PageHeader />
 
@@ -55,19 +66,26 @@ function Bookmark() {
         {data.map((item, index) => (
           <Grid item xs={3} key={index}>
             <div
-                onClick={() =>
-                  navigate("/research_display", { state: { item } })
-                }
-                // to={{
-                //   pathname: "/research_display",
-                //   state: { },
-                // }}
-                style={{ textDecoration: "none" }}
-              >
+              onClick={() =>
+                navigate("/research_display", {
+                  state: { item: item.paperItem },
+                })
+              }
+              // to={{
+              //   pathname: "/research_display",
+              //   state: { },
+              // }}
+              style={{ textDecoration: "none" }}
+            >
               <div className="card">
-                <PaperItem item={item} />
+                <PaperItem item={item.paperItem} />
               </div>
-              </div>
+            </div>
+            <RemoveBookmark
+              bookmarkId={item.uuid}
+              index={index}
+              removeDataItem={removeDataItem}
+            />
           </Grid>
         ))}
       </Grid>

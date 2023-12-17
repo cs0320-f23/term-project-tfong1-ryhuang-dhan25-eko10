@@ -1,20 +1,29 @@
-// import React from 'react';
-// import firebase from 'firebase/app';
-// import 'firebase/database';
+import React from 'react';
 
-// interface RemoveBookmarkProps {
-//     bookmarkId: string;
-// }
+import { Link } from "react-router-dom";
+import { db } from "../firebase";
+import { uid } from "uid";
+import { remove } from "firebase/database";
+import { set, ref } from "firebase/database";
+import { useState, useEffect } from "react";
 
-// const RemoveBookmark: React.FC<RemoveBookmarkProps> = ({ bookmarkId }) => {
-//     const handleRemoveBookmark = () => {
-//         // Remove the bookmark from the Firebase Realtime Database
-//         firebase.database().ref(`bookmarks/${bookmarkId}`).remove();
-//     };
+interface RemoveBookmarkProps {
+  bookmarkId: string;
+  index: number;
+  removeDataItem: (index: number) => void; // Add this line
+}
 
-//     return (
-//         <button onClick={handleRemoveBookmark}>Remove Bookmark</button>
-//     );
-// };
 
-// export default RemoveBookmark;
+const RemoveBookmark: React.FC<RemoveBookmarkProps> = ({ bookmarkId, index, removeDataItem }) => {
+   const handleRemoveBookmark = async () => {
+     removeDataItem(index);
+     const bookmarkRef = ref(db, bookmarkId);
+     await remove(bookmarkRef);
+   };
+
+    return (
+        <button onClick={handleRemoveBookmark}>remove bookmark</button>
+    );
+};
+
+export default RemoveBookmark;
