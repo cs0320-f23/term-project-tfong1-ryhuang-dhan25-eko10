@@ -1,6 +1,6 @@
 import React from "react";
 
-export interface PaperItemProps {
+interface PaperItemProps {
   item: {
     title: string;
     author: string[];
