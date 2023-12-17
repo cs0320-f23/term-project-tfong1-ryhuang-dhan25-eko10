@@ -17,6 +17,13 @@ Repo Link: https://github.com/cs0320-f23/term-project-tfong1-ryhuang-dhan25-eko1
 ## Features
 Paper Pilot is a webapp where users can upload a DOI link of their choice, and the application will recommend papers similar to that DOI link. It utilizes React Routing to navigate to the different pages, google's firebase to store the user's bookmarked papers, a DocToVec model that converts each paper into a vector, a kd-tree algorithm that finds organizes relevant papers based on how close they are to each other in the higher k-dimensional space. In addition, the model was trained on a 800,000 pickle file of research papers, with additional features such as caching so that the user doesn't have to wait long for the search results to appear.
 
+## To run:
+cd backend/
+run the vector_search.py flask application.
+cd ..
+cd frontend/
+npm run dev
+
 
 ## Design Decisions
 The initial design layout was done in the figma below:
