@@ -54,8 +54,8 @@ test('I use the searchbar and input a DOI', async ({ page }) => {
     await page.getByLabel("search-button").click();
 
     //load next page
-    await expect(page.getByLabel('paper-0')).toBeVisible();
-    await expect(page.getByLabel('paper-1')).toBeVisible();
+    await expect(page.getByLabel('0paper')).toBeVisible();
+    await expect(page.getByLabel('1paper')).toBeVisible();
 })
 
 
@@ -66,7 +66,7 @@ test('I use the search button or press enter', async ({ page }) => {
     await page.getByLabel("searchbar").fill("10.3389/fmicb.2023.1137083");
     await page.keyboard.press('Enter');
 
-    await expect(page.getByLabel('paper-0')).toBeVisible();
+    await expect(page.getByLabel('0paper')).toBeVisible();
     await expect(page.getByLabel('searchbar')).not.toContainText('10.3389/fmicb.2023.1137083');
 
     // go back to start page
@@ -78,7 +78,7 @@ test('I use the search button or press enter', async ({ page }) => {
     await page.getByLabel("searchbar").fill("10.3389/fped.2022.897333");
     await page.getByLabel('search-button').click();
 
-    await expect(page.getByLabel('paper-0')).toBeVisible();
+    await expect(page.getByLabel('0paper')).toBeVisible();
     await expect(page.getByLabel('searchbar')).not.toContainText('10.3389/fmicb.2023.1137083');
 })
 
