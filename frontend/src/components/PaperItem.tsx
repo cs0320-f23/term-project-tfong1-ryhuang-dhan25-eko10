@@ -1,6 +1,6 @@
 import React from "react";
 
-interface PaperItemProps {
+export interface PaperItemProps {
   item: {
     title: string;
     author: string;
@@ -8,7 +8,6 @@ interface PaperItemProps {
     doi: string;
   };
 }
-
 
 const PaperItem: React.FC<PaperItemProps> = ({ item }) => {
   return (

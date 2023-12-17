@@ -4,11 +4,13 @@ import PaperItem from "../components/PaperItem";
 import { Grid } from "@mui/material";
 import PageHeader from "../components/Pageheader.tsx";
 import { useLocation } from "react-router-dom";
+import AddBookmark from "../components/AddBookmark.tsx";
 
 
 function recommended() {
   const location = useLocation();
   const recommendedResults = location.state?.recommendedResults || [];
+   console.log("Recommended Results:", recommendedResults);
   return (
     <div>
       <div style={{ marginTop: "30px" }}></div>
@@ -26,7 +28,6 @@ function recommended() {
               <Link
                 to={{
                   pathname: "/research_display",
-                  state: { some: item },
                 }}
                 style={{ textDecoration: "none" }}
               >
@@ -34,6 +35,7 @@ function recommended() {
                   <PaperItem item={item} />
                 </div>
               </Link>
+              <AddBookmark paperItem={item} />
             </Grid>
           )
         )}
