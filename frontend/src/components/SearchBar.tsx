@@ -1,7 +1,13 @@
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import mockedResult from "../assets/mockedResults.json";
 
-const SearchBar = () => {
+interface searchProps {
+  message: string;
+  setMessage: Dispatch<SetStateAction<string>>;
+}
+
+const SearchBar = (props: searchProps) => {
   const [doi, setDoi] = useState("");
   const navigate = useNavigate();
 
@@ -25,10 +31,19 @@ const SearchBar = () => {
       // Navigate to the "/recommended" route with the data
       navigate("/recommended", { state: { recommendedResults } });
     } catch (error) {
+
+      if(doi == 'test') {
+        const recommendedResults = mockedResult;
+        navigate("/recommended", { state: { recommendedResults } });
+        
+      }
+      else {
+        props.setMessage("DOI was not recognized in the crossref database!")
+      }
       // Handle errors
       
-    }
   };
+};
 
   return (
     <div>
