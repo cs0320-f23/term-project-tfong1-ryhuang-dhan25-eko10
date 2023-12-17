@@ -11,8 +11,8 @@ interface PaperItemProps {
 
 const PaperItem: React.FC<PaperItemProps> = ({ item }) => {
   return (
-    <div>
-      <div className="title">{item.title}</div>
+    <div aria-label='paper-item'>
+      <div className="title" aria-label={item.title}>{item.title}</div>
       {/* <div className="author">{"Authors : " + item.author}</div> */}
       <div className="date">{"Date : " + item.date}</div>
       <div className="doi">{"DOI : " + item.doi}</div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import PaperItem from "../components/PaperItem";
 import { Grid } from "@mui/material";
 import PageHeader from "../components/Pageheader.tsx";
@@ -41,8 +41,8 @@ function recommended() {
                 // }}
                 style={{ textDecoration: "none" }}
               >
-                <div className="card">
-                  <PaperItem item={item} aria-label={index + "paper"} />
+                <div aria-label={index + "paper"} className="card">
+                  <PaperItem item={item}  />
                 </div>
               </div>
               <AddBookmark paperItem={item} />

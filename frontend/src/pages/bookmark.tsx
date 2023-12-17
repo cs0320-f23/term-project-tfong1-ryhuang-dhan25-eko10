@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Grid } from "@mui/material";
 import PageHeader from "../components/Pageheader";
 import PaperItem from "../components/PaperItem";
 import { db } from "../firebase";
 import { get, ref } from "firebase/database";
 import mockedResult from "../assets/mockedResults.json";
-import item from "../components/PaperItem";
 import RemoveBookmark from "../components/RemoveBookmark";
 
 interface PaperItem {
