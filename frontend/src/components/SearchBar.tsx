@@ -14,7 +14,7 @@ const SearchBar = () => {
       const title = json.message.title;
 
       const backendUrl = `http://127.0.0.1:5000/knn?query=${encodeURIComponent(
-        title
+        title+abstract
       )}&k=16`;
       const backendResponse = await fetch(backendUrl);
       const responseJSON = await backendResponse.json();

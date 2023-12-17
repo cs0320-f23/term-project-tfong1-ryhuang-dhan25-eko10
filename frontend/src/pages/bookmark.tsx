@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Grid } from "@mui/material";
 import PageHeader from "../components/Pageheader";
 import PaperItem from "../components/PaperItem";
@@ -9,6 +9,8 @@ import mockedResult from "../assets/mockedResults.json";
 import item from "../components/PaperItem";
 
 function Bookmark() {
+  const navigate = useNavigate();
+
   const [data, setData] = useState<
     {
       item: {
@@ -52,11 +54,20 @@ function Bookmark() {
       <Grid container rowSpacing={1} columnSpacing={1}>
         {data.map((item, index) => (
           <Grid item xs={3} key={index}>
-            <Link to={`/research_display`} style={{ textDecoration: "none" }}>
+            <div
+                onClick={() =>
+                  navigate("/research_display", { state: { item } })
+                }
+                // to={{
+                //   pathname: "/research_display",
+                //   state: { },
+                // }}
+                style={{ textDecoration: "none" }}
+              >
               <div className="card">
                 <PaperItem item={item} />
               </div>
-            </Link>
+              </div>
           </Grid>
         ))}
       </Grid>
