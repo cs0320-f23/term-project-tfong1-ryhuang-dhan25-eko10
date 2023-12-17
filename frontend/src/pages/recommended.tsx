@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import PaperItem from "../components/PaperItem";
 import { Grid } from "@mui/material";
 import PageHeader from "../components/Pageheader.tsx";
@@ -8,6 +8,7 @@ import AddBookmark from "../components/AddBookmark.tsx";
 
 
 function recommended() {
+  const navigate = useNavigate();
   const location = useLocation();
   const recommendedResults = location.state?.recommendedResults || [];
    console.log("Recommended Results:", recommendedResults);
@@ -21,14 +22,16 @@ function recommended() {
       <Grid container rowSpacing={1} columnSpacing={1}>
         {recommendedResults.map(
           (
-            item: { title: string; author: string; date: string; doi: string },
+            item: { title: string; author: string[]; date: string[]; doi: string },
             index: React.Key | null | undefined
           ) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
-              <Link
-                to={{
-                  pathname: "/research_display",
-                }}
+              <div
+                onClick={() => (navigate("/research_display", { state: { item } }))}
+                // to={{
+                //   pathname: "/research_display",
+                //   state: { },
+                // }}
                 style={{ textDecoration: "none" }}
               >
                 <div className="card">
@@ -36,6 +39,7 @@ function recommended() {
                 </div>
               </Link>
               <AddBookmark paperItem={item} />
+
             </Grid>
           )
         )}

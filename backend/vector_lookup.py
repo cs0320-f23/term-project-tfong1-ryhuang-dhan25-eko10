@@ -1,6 +1,7 @@
 import pandas as pd
 import requests
 import json
+import re
 
 class VectorLookup:
     def __init__(self) -> None:
@@ -52,6 +53,16 @@ class VectorLookup:
                 title = ''
                 date = ''
                 id = ''
+                abstract = ''
+                try:
+                    clean = re.compile('<.*?>')
+                    
+                    abstract = json_response['message']['abstract']
+                    abstract = re.sub(clean, '', abstract)
+                    abstract = abstract.replace('&amp;', '&')
+                except:
+                    abstract = "No abstract found"
+
                 if 'author' in json_response['message']:
                     authors = json_response['message']['author']
                     for author in authors:
@@ -62,7 +73,10 @@ class VectorLookup:
                 else:
                     authors = ['No authors found']                  
                 try:
+                    clean = re.compile('<.*?>')
                     title = json_response['message']['title'][0]
+                    title = re.sub(clean, '', title)
+
                 except:
                     title = 'No title found'
                 try: 
@@ -78,7 +92,8 @@ class VectorLookup:
                     'title': title,
                     'author':author_list,
                     'date': date,
-                    'doi': id
+                    'doi': id,
+                    'abstract': abstract
                 }
                 json_array.append(output)
         return json_array
