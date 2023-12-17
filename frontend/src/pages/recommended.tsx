@@ -33,11 +33,10 @@ function recommended() {
                 //   state: { },
                 // }}
                 style={{ textDecoration: "none" }}
-              >
+              />
                 <div className="card">
                   <PaperItem item={item} aria-label={index+"paper"} />
                 </div>
-              </Link>
               <AddBookmark paperItem={item} />
 
             </Grid>
