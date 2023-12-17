@@ -23,7 +23,7 @@ function recommended() {
             item: { title: string; author: string[]; date: string[]; doi: string },
             index: React.Key | null | undefined
           ) => (
-            <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
+            <Grid item xs={12} sm={6} md={4} lg={3} key={index} aria-label={"paper-"+ index}>
               <div
                 onClick={() => (navigate("/research_display", { state: { item } }))}
                 // to={{

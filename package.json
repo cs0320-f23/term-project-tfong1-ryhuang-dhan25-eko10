@@ -3,5 +3,10 @@
     "@mui/material": "^5.14.20",
     "firebase": "^10.7.1",
     "uid": "^2.0.2"
-  }
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.1",
+    "@types/node": "^20.10.4"
+  },
+  "scripts": {}
 }

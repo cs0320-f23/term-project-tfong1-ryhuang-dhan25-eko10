@@ -4,7 +4,7 @@ import Bookmark from "./BookmarkButton";
 
 const PageHeader = () => {
   return (
-    <div className="container">
+    <div className="container" aria-label="page-header">
       <BackButton />
       <SearchBar />
       <Bookmark />
