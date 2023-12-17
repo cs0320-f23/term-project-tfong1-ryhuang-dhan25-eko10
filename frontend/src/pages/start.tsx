@@ -5,7 +5,7 @@ export default function Start() {
   return (
     <div className="flex-col flex justify-between items-center mt-52 h-screen">
       <div>
-        <h1 className="text-8xl font-bold mb-5">Research Recommender</h1>
+        <h1 className="text-8xl font-bold mb-5">Paper Pilot</h1>
         <div>
           <SearchBar />
         </div>

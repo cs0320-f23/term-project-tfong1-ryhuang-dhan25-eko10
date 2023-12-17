@@ -26,16 +26,17 @@ const SearchBar = () => {
       navigate("/recommended", { state: { recommendedResults } });
     } catch (error) {
       // Handle errors
-      console.error("Error:", error);
+      
     }
   };
 
   return (
     <>
-      <form>
+      <form >
         <input
         className="searchBar"
         placeholder="DOI"
+        aria-label="searchbar"
         value={doi}
         onChange={(e) => setDoi(e.target.value)}
         onKeyDown={(ev) => {
@@ -44,7 +45,7 @@ const SearchBar = () => {
           }
         }}
       />
-      <button className="searchButton" type='button' onClick={() => handleSearch()}>Search</button>
+      <button aria-label="search-button" className="searchButton" type='button' onClick={() => handleSearch()}>Search</button>
       </form>
       
     </>
