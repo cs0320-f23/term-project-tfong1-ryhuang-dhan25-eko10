@@ -66,7 +66,8 @@ test('I use the search button or press enter', async ({ page }) => {
     await page.getByLabel("searchbar").fill("10.3389/fmicb.2023.1137083");
     await page.keyboard.press('Enter');
 
-    await expect(page.getByLabel('0paper')).toBeVisible();
+    await page.locator('.card').first().click();
+    await expect(page.getByRole('heading')).toContainText('Towards in vivo PET imaging');
     await expect(page.getByLabel('searchbar')).not.toContainText('10.3389/fmicb.2023.1137083');
 
     // go back to start page

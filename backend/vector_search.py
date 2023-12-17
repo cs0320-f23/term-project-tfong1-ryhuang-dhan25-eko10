@@ -50,7 +50,7 @@ model.train(tagged_data,
                 epochs=model.epochs)
 
 lookup = VectorLookup()
-lookup.change_database('backend/data/vector_database_80000_cleaned.pickle')
+lookup.change_database('backend/data/vector_database_800000_cleaned.pickle')
 
 embeddings = lookup.return_all_vectors()
 labels = lookup.return_all_doi_labels()

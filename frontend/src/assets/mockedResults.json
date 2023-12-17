@@ -1,98 +1,115 @@
 [
   {
     "title": "Visualization of synaptic domains in the Drosophila brain by magnetic resonance microscopy at 10 micron isotropic resolution.",
-    "author": "Choong H CH Lee",
-    "date": "2015-03-10",
-    "doi": "10.1038/srep08920"
+    "author": ["Choong H CH Lee"],
+    "date": ["2015-03-10"],
+    "doi": "10.1038/srep08920",
+    "abstract": "Understanding the complex architecture, connectivity and pathology of the human brain is a major application of magnetic resonance imaging (MRI). However, the cellular basis of MR signal is still poorly understood"
   },
   {
     "title": "Is dream recall underestimated by retrospective measures and enhanced by keeping a logbook? A review.",
-    "author": "Denholm J DJ Aspy',",
-    "date": "2015-05",
-    "doi": "10.1016/j.concog.2015.02.005"
+    "author": ["Denholm J DJ Aspy',"],
+    "date": ["2015-05"],
+    "doi": "10.1016/j.concog.2015.02.005",
+    "abstract": "No abstract found"
   },
   {
     "title": "Paper3",
-    "author": "Author3",
-    "date": "Date3",
-    "doi": "Doi3"
+    "author": ["Author3"],
+    "date": ["Date3"],
+    "doi": "Doi3",
+    "abstract": "No abstract found"
+
   },
   {
     "title": "Paper4",
-    "author": "Author4",
-    "date": "Date4",
-    "doi": "Doi4"
+    "author": ["Author4"],
+    "date": ["Date4"],
+    "doi": "Doi4",
+    "abstract": "No abstract found"
   },
   {
     "title": "Paper5",
-    "author": "Author5",
-    "date": "Date5",
-    "doi": "Doi5"
+    "author": ["Author5"],
+    "date": ["Date5"],
+    "doi": "Doi5",
+    "abstract": "No abstract found"
   },
   {
     "title": "Paper6",
-    "author": "Author6",
-    "date": "Date6",
-    "doi": "Doi6"
+    "author": ["Author6"],
+    "date": ["Date6"],
+    "doi": "Doi6",
+    "abstract": "No abstract found"
   },
   {
     "title": "Paper7",
-    "author": "Author7",
-    "date": "Date7",
-    "doi": "Doi7"
+    "author": ["Author7"],
+    "date": ["Date7"],
+    "doi": "Doi7",
+    "abstract": "No abstract found"
   },
   {
     "title": "Paper8",
-    "author": "Author8",
-    "date": "Date8",
-    "doi": "Doi8"
+    "author": ["Author8"],
+    "date": ["Date8"],
+    "doi": "Doi8",
+    "abstract": "No abstract found"
   },
   {
     "title": "Paper9",
-    "author": "Author9",
-    "date": "Date9",
-    "doi": "Doi9"
+    "author": ["Author9"],
+    "date": ["Date9"],
+    "doi": "Doi9",
+    "abstract": "No abstract found"
   },
   {
     "title": "Paper10",
-    "author": "Author10",
-    "date": "Date10",
-    "doi": "Doi10"
+    "author": ["Author10"],
+    "date": ["Date10"],
+    "doi": "Doi10",
+    "abstract": "No abstract found"
   },
   {
     "title": "Paper11",
-    "author": "Author11",
-    "date": "Date11",
-    "doi": "Doi11"
+    "author": ["Author11"],
+    "date": ["Date11"],
+    "doi": "Doi11",
+    "abstract": "No abstract found"
   },
   {
     "title": "Paper12",
-    "author": "Author12",
-    "date": "Date12",
-    "doi": "Doi12"
+    "author": ["Author12"],
+    "date": ["Date12"],
+    "doi": "Doi12",
+    "abstract": "No abstract found"
   },
   {
     "title": "Paper13",
-    "author": "Author13",
-    "date": "Date13",
-    "doi": "Doi13"
+    "author": ["Author13"],
+    "date": ["Date13"],
+    "doi": "Doi13",
+    "abstract": "No abstract found"
   },
   {
     "title": "Paper14",
-    "author": "Author14",
-    "date": "Date14",
-    "doi": "Doi14"
+    "author": ["Author14"],
+    "date": ["Date14"],
+    "doi": "Doi14",
+    "abstract": "No abstract found"
   },
   {
     "title": "Paper15",
-    "author": "Author15",
-    "date": "Date15",
-    "doi": "Doi15"
+    "author": ["Author15"],
+    "date": ["Date15"],
+    "doi": "Doi15",
+    "abstract": "No abstract found"
   },
   {
     "title": "Paper16",
-    "author": "Author16",
-    "date": "Date16",
-    "doi": "Doi16"
+    "author": ["Author16"],
+    "date": ["Date16"],
+    "doi": "Doi16",
+    "abstract": "No abstract found"
   }
 ]

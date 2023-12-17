@@ -15,8 +15,8 @@ function Bookmark() {
     {
       item: {
         title: string;
-        author: string;
-        date: string;
+        author: string[];
+        date: string[];
         doi: string;
       };
     }[]
