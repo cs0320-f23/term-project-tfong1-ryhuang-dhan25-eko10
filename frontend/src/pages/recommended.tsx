@@ -22,23 +22,30 @@ function recommended() {
       <Grid container rowSpacing={1} columnSpacing={1}>
         {recommendedResults.map(
           (
-            item: { title: string; author: string[]; date: string[]; doi: string },
+            item: {
+              title: string;
+              author: string[];
+              date: string[];
+              doi: string;
+            },
             index: React.Key | null | undefined
           ) => (
             <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
               <div
-                onClick={() => (navigate("/research_display", { state: { item } }))}
+                onClick={() =>
+                  navigate("/research_display", { state: { item } })
+                }
                 // to={{
                 //   pathname: "/research_display",
                 //   state: { },
                 // }}
                 style={{ textDecoration: "none" }}
-              />
+              >
                 <div className="card">
-                  <PaperItem item={item} aria-label={index+"paper"} />
+                  <PaperItem item={item} aria-label={index + "paper"} />
                 </div>
+              </div>
               <AddBookmark paperItem={item} />
-
             </Grid>
           )
         )}
