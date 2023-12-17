@@ -32,21 +32,17 @@ const SearchBar = () => {
 
   return (
     <>
-      <form >
         <input
         className="searchBar"
         placeholder="DOI"
         aria-label="searchbar"
         value={doi}
         onChange={(e) => setDoi(e.target.value)}
-        onKeyDown={(ev) => {
-          if (ev.key === "Enter") {
+        onKeyDown={(ev) => {if (ev.key === "Enter") {
             handleSearch();
-          }
-        }}
+          }}}
       />
       <button aria-label="search-button" className="searchButton" type='button' onClick={() => handleSearch()}>Search</button>
-      </form>
       
     </>
   );
