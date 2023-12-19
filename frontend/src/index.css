@@ -27,8 +27,6 @@ a:hover {
 }
 
 body {
-  margin: 0;
-  display: flex;
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
@@ -69,4 +67,30 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+.color-bar {
+  background: linear-gradient(to bottom right, rgba(214, 144, 215, 0.8), rgba(126, 138, 218, 0.8));
+}
+
+.info-bar {
+  width:fit-content;
+  padding:0.6em;
+  border-radius:0.3em;
+  max-width: 80vw;
+}
+
+.info-col {
+  width: 40vw;
+  padding: 1em;
+  font-size: 24px;
+}
+
+.info-algo {
+  padding: 1em;
+  font-size: 24px;
+}
+
+.start-image {
+  height:min(250px, 20vw);
 }

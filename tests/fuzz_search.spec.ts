@@ -18,10 +18,10 @@ test.beforeEach(async({page}) => {
 
   })
 
-test('I navigate to a new page and press the back button', async ({ page }) => {
+test('I input random string requests to the backend server', async ({ page }) => {
     await expect(page.getByLabel('searchbar')).toBeVisible();
 
-    //click on bookmarks
+    //Select and fill searchbar 
     for (let i = 0; i < 100; i ++) {
         await page.getByLabel("searchbar").click();
         let query = generateString(100);

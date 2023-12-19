@@ -21,7 +21,7 @@ const SearchBar = (props: searchProps) => {
 
       const backendUrl = `http://127.0.0.1:5000/knn?query=${encodeURIComponent(
         title+abstract
-      )}&k=16`;
+      )}&k=18`;
       const backendResponse = await fetch(backendUrl);
       const responseJSON = await backendResponse.json();
 
@@ -29,12 +29,13 @@ const SearchBar = (props: searchProps) => {
       const recommendedResults = responseJSON.result;
 
       // Navigate to the "/recommended" route with the data
-      navigate("/recommended", { state: { recommendedResults } });
+      navigate("/recommended", { state: { recommendedResults, title } });
     } catch (error) {
 
       if(doi == 'test') {
         const recommendedResults = mockedResult;
-        navigate("/recommended", { state: { recommendedResults } });
+        const title = 'test'
+        navigate("/recommended", { state: { recommendedResults, title } });
         
       }
       else {

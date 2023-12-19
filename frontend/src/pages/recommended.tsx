@@ -11,6 +11,7 @@ function recommended() {
   const navigate = useNavigate();
   const location = useLocation();
   const recommendedResults = location.state?.recommendedResults || [];
+  const title = location.state?.title || '';
    console.log("Recommended Results:", recommendedResults);
   return (
     <div>
@@ -18,6 +19,14 @@ function recommended() {
       <PageHeader />
 
       <div style={{ marginTop: "30px" }}></div>
+      <div style={{display:'flex', justifyContent:'center'}}>
+        <div className="color-bar info-bar">
+          <div>Finding papers similar to:</div>
+          <div style={{fontWeight:'bold'}}>{title}</div>
+        </div>
+
+      </div>
+
       <h1>Recommended Papers</h1>
       <Grid container rowSpacing={1} columnSpacing={1}>
         {recommendedResults.map(
